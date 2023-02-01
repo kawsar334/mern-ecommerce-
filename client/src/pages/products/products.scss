@@ -1,0 +1,44 @@
+@import "../../global.scss";
+
+
+.products_container{
+    width: 100%;
+    h1 {
+            margin-left: 30px;
+            font-size: 40px;
+        }
+
+    .product_wrapper{
+        display: flex;
+        margin: 20px 0px;
+        justify-content: space-between;
+        padding: 10px 20px;
+        @include mobile{
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+
+        .productLeft{
+            display: flex;
+            gap: 10px;
+
+            h2{
+                font-size: 20px;
+                margin: 0 10px;
+            }
+        
+        }
+        .productRight{
+                display: flex;
+                    gap: 10px;
+                
+                    h2 {
+                        font-size: 20px;
+                        margin: 0 10px;
+                    }
+
+        }
+    }
+
+}

@@ -1,0 +1,56 @@
+@import "../../global.scss";
+
+
+.newsletter{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    h1{
+
+        font-size: 60px;
+        
+    }p{
+        text-transform: capitalize;
+        font-size: 20px;
+        text-align: justify;
+    }
+
+    .newsletterbottom{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0.1px solid $borderColor;
+        width: 400px;
+        border-radius: 3px;
+        height: 40px;
+        border-radius: 5px;
+        overflow: hidden;
+        input{
+            border: none;
+            flex: 4;
+            height: 100%;
+        }
+        span{
+            flex: 1;
+            background-color: $maincolor;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-left: 0.1px solid $borderColor;
+            .fa-arrow-right {
+                    background-color: $maincolor;
+                    color: white;
+                    font-size: 25px;
+                    cursor: pointer;
+                    font-weight: 700;
+            
+                }
+        }
+
+       
+    }
+}

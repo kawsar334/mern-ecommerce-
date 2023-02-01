@@ -1,0 +1,92 @@
+@import "../../global.scss";
+
+.sliderContainer{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    background-color: coral;
+    overflow: hidden;
+    @include mobile{
+        display: none;
+    }
+    i{
+        position: absolute;
+        top: 45%;
+        padding: 10px ;
+        width: 50px;
+        height: 50px;
+        background-color: rgb(0,0,0,0.3);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+        z-index: 111;
+    }
+    .fa-circle-arrow-left{
+        left: 20px;
+    }
+    .fa-circle-arrow-right{
+        right: 20px;
+
+    }
+
+    .wrapper{
+        height: 100%;
+        display: flex;
+        transition: 2s all ease;
+        .slide{
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+
+            .imgContainer{
+                flex: 1 ;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+
+                img{
+                    height: 400px;
+                    width: 400px;
+                    border-radius: 50%;
+
+                }
+                
+            }
+            .infoContainer{
+                flex:1 !important;
+                padding: 50px;
+                text-align: justify;
+                .title{
+                    font-size: 30px;
+                }
+                .desc{
+                    letter-spacing: 3px;
+                    word-spacing: 10px;
+                    text-transform: uppercase;
+                    padding-right: 20px;
+                    
+                }
+                button{
+                    border:1px solid $maincolor;
+                    padding: 5px 10px ;
+                    color: $maincolor;
+                    margin-top: 20px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    background-color: transparent;
+                    transition: all 1s ease;
+                    &:hover{
+                        background-color: $maincolor;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

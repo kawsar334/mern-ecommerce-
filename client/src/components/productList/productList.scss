@@ -1,0 +1,60 @@
+@import "../../global.scss";
+
+.productList{
+    width: 23%;
+    height: 230px;
+    position: relative;
+    @include mobile{
+        width: 45%;
+        height: 150px;
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .productInfo{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px ;
+        background-color: rgba(0,0,0,0.4);
+        opacity: 0;
+        cursor: pointer;
+        transition: all 1s ease;
+       a{
+
+        width: 40px;
+        height: 40px;
+        background-color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        i {
+                font-size: 20px;
+                cursor: pointer;
+                color: gray;
+                transition: all 1s ease;
+               
+        
+                &:hover {
+                    transform: scale(1.3);
+                }
+        
+            }
+       }
+    }
+
+    &:hover{
+        .productInfo{
+            opacity: 1;
+        }
+    }
+   
+}

@@ -1,0 +1,70 @@
+@import "../../global.scss";
+
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(88, 87, 87);
+    padding: 20px 10px;
+    a{
+        color: black;
+        &:hover{
+            color:white;
+        }
+    }
+    .footermiddle{
+        width: 100%;
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        border-bottom: 0.1px solid $borderColor;
+
+        @include mobile{
+            flex-direction: column;
+            gap: 0px;
+        }
+        margin: 20px;
+        .footerItem{
+            display: flex;
+            flex-direction: column;
+            padding: 10px ;
+
+
+            h1{
+                font-size: 18px;
+                // text-align: center;
+                color: $white;
+                font-weight: 700;
+                margin-left: 20px;
+            }
+            ul{
+
+               
+                li{
+                    a{
+                        font-size: 14px ;
+                        color: $white;
+                    }
+                }
+
+            }
+        }
+    }
+    .footerbottom{
+        p{
+            font-size: 13px;
+            a{
+                font-size: 14px ;
+                font-weight: 600;
+                margin-left: 10px ;
+                &:hover{
+                    text-decoration: underline;
+                }
+
+            }
+        }
+    }
+}

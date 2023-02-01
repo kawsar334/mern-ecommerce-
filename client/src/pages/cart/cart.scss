@@ -1,0 +1,153 @@
+@import "../../global.scss";
+
+
+.cartTop{
+    padding: 10px 30px ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   .continuebtn{
+       padding: 5px 10px ;
+       background-color: #000;
+       color: $white;
+       cursor: pointer;
+       border: 0.1px solid $white;
+       transition: all 1s ease;
+       &:hover{
+        background-color: transparent;
+        color: #000;
+        border: 0.1px solid #000;
+       }
+   }
+   .checkoutbtn{
+    background-color: $white;
+    border:0.1px solid #000;
+    padding: 5px 10px ;
+    background-color: $white;
+    transition: all 1s ease;
+    &:hover{
+        background-color: #000;
+        border: 0.1px solid $borderColor;
+        color: $white;
+
+    }
+   }
+
+
+
+}
+
+// cartBottom
+
+.cartBottom{
+    display: flex;
+    margin: 20px 0px;
+    @include mobile{
+        flex-direction: column;
+    }
+    .cartleft{
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        @include mobile{
+            gap: 0px;
+        }
+      .cartLeftItem{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 0.1px solid $borderColor;
+            padding: 10px 0px;
+            flex-wrap: wrap;
+        .cartImgContainer{
+            width: 150px;
+            height: 150px;
+            margin-left: 20px;
+            @include mobile{
+                margin-right: 10px;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+        }
+        .cartdesc{
+            p{
+                text-transform: uppercase;
+                color: #555;
+                .cartcolor{
+                  
+                    border-radius: 50%;
+
+                }
+            }
+        }
+        .cartCounter{
+            margin-left: 20px;
+            @include mobile{
+                margin: 10px auto;
+
+            }
+            
+            span{
+                padding: 5px ;
+                margin-left: 10px;
+                cursor: pointer;
+                border: 0.1px solid $borderColor;
+            }
+            h4{
+                font-weight: 700;
+                margin-left: 30px;
+                font-size: 30px;
+                color: #555;
+            }
+        }}
+    }
+    .cartright{
+        flex: 1;
+        height: max-content;
+        border: 0.1px solid $borderColor;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        p{
+            display: flex;
+            justify-content: space-between;
+            .bold{
+                font-weight: 700;
+                
+            }
+        }
+        .total{
+            h4{
+
+                display: flex;
+                justify-content: space-between;
+                font-weight: 700;
+            }
+        }
+
+        button{
+            background-color: #000;
+            color: white;
+            width: max-content;
+            align-self: center;
+            margin: 20px ;
+            padding: 5px 20px ;
+            border: 0.1px solid $borderColor;
+            transition: all 1s ease;
+            text-transform: uppercase;
+            &:hover{
+                color: #000;
+                background-color: #fff;
+                border: 0.1px solid #000;
+            }
+
+        }
+    }
+
+}

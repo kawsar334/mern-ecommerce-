@@ -1,0 +1,32 @@
+
+$maincolor:rgb(67, 15, 119) ;
+$borderColor :lightgray ;
+$white:white ;
+$crimson:rgb(213, 68, 97);
+
+
+$width:778px;
+@mixin mobile {
+  @media (max-width:#{$width}) {
+    @content 
+  }
+  
+}
+
+.app{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payButton{
+  padding: 10px 20px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 10px ;
+  cursor: pointer;
+
+}

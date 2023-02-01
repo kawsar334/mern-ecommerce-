@@ -1,0 +1,17 @@
+
+@import "../../global.scss";
+
+.annouccement{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $maincolor;
+    h3{
+        font-size: 20px;
+        color: $white;
+        text-transform: capitalize;
+    }
+
+}
