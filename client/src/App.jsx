@@ -28,10 +28,6 @@ function App() {
         <Route path='/details/:id' element={<Details />} />
         <Route path='/cart' element={<Cart />} />
 
-
-
-        
-
 </Routes>
 
     

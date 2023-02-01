@@ -10,7 +10,7 @@ router.post("/addProduct",verifyTokenAndAdmin, addProduct)
 router.put("/:id", verifyTokenAndAdmin, updateProduct);
 
 //DELETE Product 
-router.delete("/:id,", verifyTokenAndAdmin, deleteProduct);
+router.delete("/:id", verifyTokenAndAdmin, deleteProduct);
 //GET  A Product
 router.get("/find/:id", getProduct);
 //GET ALL Product 
