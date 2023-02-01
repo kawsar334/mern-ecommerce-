@@ -1,0 +1,176 @@
+
+.product{
+    flex: 4;
+}
+
+
+
+
+.updatetop{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.updateTitle{
+    margin-left: 20px;
+    text-transform: capitalize;
+}
+.updateBtn{
+    background-color: teal;
+    padding: 0px 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+.updateBtn>a{
+    color: white;
+}
+
+/* ================ update bottom start here =============== */
+
+.updatetbottom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+/**************updateBottomLeft start ************** */
+.updateBottomLeft{
+    padding:20px 10px ;
+    box-shadow: 0 0 10px rgb(0,0,0,0.3);
+    flex: 1;
+
+}
+.userProfile{
+    display: flex;
+    gap: 10px ;
+    align-content: center;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgb(0,0,0,0.1);
+}
+.userProfileImg{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+
+    
+}
+.userProfileDes{
+    padding: 0;
+
+}
+.userprofileName{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+    text-transform: capitalize;
+
+}
+.userprofileTitle{
+    color: #555;
+    margin: 0;
+    font-size: 14px;
+}
+
+.userDetails{
+    margin: 20px 10px ;
+}
+.userTitle{
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0px;
+}
+.useritem{
+    display: flex;
+    align-content: center;
+    gap:5px ;
+}
+
+/**************updateBottomLeft end here  ************** */
+
+.updateBottomright{
+    flex: 2;
+    height: max-content;
+    padding: 20px 10px;
+}
+
+.userForm{
+    display: flex;
+    box-shadow: 0 0 10px rgb(0,0,0,0.3);
+}
+.userUpdateformleft{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    justify-content: center;
+    padding: 10px 20px;    
+
+}
+.userUpdateformleft>input{
+    padding: 10px  0px;
+    width: 80%;
+    border: none;
+    border-bottom: 0.1px solid lightgrey;
+    color: #555;
+    font-size: 14px;
+}
+.userUpdteFormRight{
+    flex: 1;
+    /* background-color: red; */
+    position: relative;
+}
+
+.userImgContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.userUploadImg{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+
+}
+.userformSubmitBtn{
+    position: absolute;
+    bottom: 25%;
+    left: 35%;
+    background-color:blue;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.fa-arrow-up{
+    font-size: 30px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+/* update bottom end here ================================================= */
+
+
+
+
+
+
+@media screen and (max-width:778px ) {
+    .updatetbottom{
+   flex-direction: column;
+}
+    
+.userForm{
+    display: flex;
+    box-shadow: 0 0 10px rgb(0,0,0,0.3);
+    flex-direction: column;
+}
+
+.userImgContainer{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+}
+}

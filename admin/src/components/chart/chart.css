@@ -1,0 +1,23 @@
+
+.chart{
+    width: calc( 100vw - 250px);
+    /* height: 100vh; */
+    margin: 20px;
+    padding: 20px;
+      box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+border-radius: 10px;
+}
+
+.chartTitle{
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width:778px ) {
+    .chart{
+ display: none;
+}
+  
+    
+}

@@ -1,0 +1,29 @@
+
+.home{
+    flex: 4;
+    /* overflow-x: hidden; */
+
+}
+
+.homeWidget{
+    display: flex;
+    margin: 20px;
+    gap: 10px;
+    justify-content: center;
+   
+}
+
+@media screen and (max-width:778px ) {
+    .homeWidget{
+    display: flex;
+    margin: 0px;
+    flex-direction: column;
+    align-items: center;
+     margin: 20px 0px;
+}
+.home{
+    overflow-x: hidden;
+   
+}
+   
+}

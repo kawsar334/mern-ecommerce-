@@ -1,0 +1,7 @@
+.main_container{
+  display: flex;
+}
+
+.others{
+  flex: 4;
+}

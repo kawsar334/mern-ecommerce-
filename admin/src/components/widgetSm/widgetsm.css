@@ -1,0 +1,70 @@
+.widgetsm{
+    
+    flex: 1;
+          box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+border-radius: 10px;
+}
+
+.widgetsmtittle{
+    font-size: 32px;
+    font-weight: 600;
+
+}
+.widgetsmimg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.widgetSmList{
+    /* display: flex; */
+    /* justify-content: space-around;
+    align-content: center;
+    flex-direction: column; */
+}
+.widgetsmlistitem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+.widgetSmUser{
+    display: flex;
+    flex-direction: column;
+}
+
+.widgetSmButton{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    border: 0.1px solid lightgray;
+    padding: 5px;
+    text-transform: capitalize;
+    margin-right: 5px;
+    transition: all 1s ease;
+    border-radius: 5px;
+    background-color: #eeee;
+    color: gray;
+    
+}
+
+.widgetSmButton:hover{
+    background-color: gray;
+    color: #eeee;
+}
+
+@media screen and (max-width:778px ) {
+
+    .widgetsm{
+
+    width: 90%;
+ 
+}
+}

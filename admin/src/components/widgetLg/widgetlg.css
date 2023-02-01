@@ -1,0 +1,94 @@
+.widgetlg{
+    flex: 2;
+    /* background-color: red; */
+          box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 8px 14px -4px rgba(0,0,0,0.75);
+border-radius: 10px;
+margin-right: 10px;
+}
+
+.widgetLgTitle{
+    font-size: 22px ;
+    font-weight: 600;
+    margin-left: 10px;
+    text-transform: capitalize;
+
+
+}
+
+.widgetLgTable{
+    width: 100%;
+    border-spacing: 20px;
+}
+th{
+    text-align: left;
+}
+.widgetLgUser{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight:600 ;
+    font-size: 14px;
+
+}
+
+
+
+
+.widgetLgImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.widgetLgDate ,.widgetLgAmount{
+    color: gray;
+    font-size: 13px;
+}
+.widgetLgButton{
+  
+}
+.approved{
+    
+    color: green;
+}
+
+.Pending{
+    color:rgba(100, 192, 192, 0.75);
+  
+
+}
+.decline{
+    color: crimson;
+   
+
+}
+.approved, .decline , .Pending{
+    text-transform: capitalize;
+     padding: 5px 7px ;
+    border-radius: 10px ;
+    background-color: lightgray;
+
+
+}
+
+
+
+@media screen and (max-width:778px ) {
+    .widgetlg{
+    width:100%;
+    overflow-x: auto;
+    margin: 20px 0px ;
+    
+
+}
+
+
+.widgetLgTable{
+    border-spacing:25px;
+    width: 100%;
+    
+}
+
+}
