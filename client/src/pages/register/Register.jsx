@@ -7,7 +7,6 @@ const Register = () => {
       <div className="registerWrapper">
         <form action="" className="registerForm">
           <h1>Register </h1>
-
           <input type="text" name="" id=""  placeholder="Enter username "/>
           <input type="text" name="" id="" placeholder="Email "/>
           <input type="password" name="password" id="" placeholder="Password "/>

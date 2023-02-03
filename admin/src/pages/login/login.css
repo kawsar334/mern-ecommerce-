@@ -1,0 +1,45 @@
+.login{
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+}
+.loginwrapper{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 400px;
+    padding: 20px 10px;
+    background-color: rgb(0,0,0,0.1);
+    border-radius: 10px;
+}
+.loginForm>input{
+    padding: 10px 5px;
+    border-radius: 5px;
+    outline: none;
+
+
+}
+.loginForm>button{
+    background-color: teal;
+    color: white;
+    padding: 5px 10px ;
+    border-radius: 5px ;
+}
+
+.loginForm>button:disabled{
+    cursor: not-allowed;
+}

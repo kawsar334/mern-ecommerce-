@@ -31,11 +31,9 @@ export const Login = async(req, res, next)=>{
             if(!hashedPassword){
                 return res.status(403).json("password not match !");
             }else{
-
-                const token = jwt.sign({id:user._id, user, isAdmin:user.isAdmin}, process.env.SECRET, {expiresIn:"3d"});
+            const token = jwt.sign({id:user._id, user, isAdmin:user.isAdmin}, process.env.SECRET, {expiresIn:"3d"});
             const {password , ...others} = user._doc;
             res.status(200).json({others, token})
-
             }
         }
         

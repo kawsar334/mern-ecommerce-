@@ -1,15 +1,32 @@
 
 
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../../redux/AuthRedux";
 import "./topbar.css"
 
 const Topbar = () => {
+    const dispatch = useDispatch();
+const {currrentUser} = useSelector((state)=>state.auth);
+const navigate = useNavigate();
+
+    const handleLogout= (e)=>{
+        e.preventDefault();
+      
+        if (window.confirm('You want Logout?')) {
+            dispatch(logout());
+            navigate("/login")
+            
+        }
+    }
+
   return (
     <div className="topbar">
         <div className="topbar_wrapper">
             <div className="topleft">
-                <a href="">
-                <span className="logo">kawsar admin </span>
-                </a>
+                <Link to="/">
+                      <span className="logo">{currrentUser?.others?.username} </span>
+                </Link>
             </div>
             <div className="topright">
                 <div className="topbar_icon_container">
@@ -24,7 +41,10 @@ const Topbar = () => {
                       <i class="fa-solid fa-bell"></i>
                       {/* <span className="topicon_bage">3</span> */}
                   </div>
-                  <img src="https://images.pexels.com/photos/3763152/pexels-photo-3763152.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""  className="topbar_img"/>
+                 {currrentUser.others && <div onClick={handleLogout}>
+                      <span className="logo">Logout </span>
+                  </div>}
+                 {currrentUser?.others?.img && <img src={currrentUser?.others?.img}alt=""  className="topbar_img"/>}
             </div>
         </div>  
     </div>

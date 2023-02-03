@@ -17,7 +17,6 @@ const Details = () => {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(null);
   const [color, setColor] = useState(null)
-console.log(size)
   //GET  SINGLE PRODUCT  FROM API // BACKEND 
   useEffect(()=>{
     const getDetails = async()=>{

@@ -1,67 +1,83 @@
-import { NavLink } from "react-router-dom"
+import { useState } from "react";
+import { useEffect } from "react";
+import { NavLink, useLocation,useNavigate } from "react-router-dom"
+import { publicRequest, userRequest } from "../../api/requestMethods";
 import "./product.css"
-
+import axios from "axios";
 const Product = () => {
+    const navigate = useNavigate();
+    const id = useLocation().pathname.split("/")[2];
+    const [product ,setProduct] =useState({});
+    const [file, setFile] = useState(null);
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+    const [price, setPrice] = useState(0);
+
+
+
+
+    useEffect(()=>{
+        const getProduct = async()=>{
+            try{
+                const res =await publicRequest.get(`/product/find/${id}`);
+                setProduct(res.data)
+            }catch(err){
+                console.log(err);
+            }
+        }
+        getProduct();
+    },[id])
+
+const handleUpdate = async(e)=>{
+    e.preventDefault();
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "facebook");
+    try {
+        const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dmvmzwqkw/image/upload", data);
+        const newProduct = { title, desc, price, img:uploadRes.data.secure_url, price }
+        const res = await userRequest.put(`/product/${id}`, newProduct);
+        console.log(res.data)
+        if(res.status=== 200){
+            navigate(`/`);
+        }
+
+    }catch(err){
+        console.log(err);
+    }
+
+}
+
   return (
     <div className="product">
-          <div className="updatetop">
-              <h3 className="updateTitle">Edit Prduct </h3>
-              <button className="updateBtn"><NavLink to="/newproduct">Create Product</NavLink></button>
-          </div>
-          <div className="updatetbottom">
-              <div className="updateBottomLeft updateItem">
+        <div className="productWrapper">
+            <div className="productLeft">
+                <h1  className="text-capitalize">{product.title}</h1>
+                  <img src={product?.img} alt="" className="productdetailsImg" />
+                  <p><b>colors:</b>{product.color?.map((s) => (
+                      <span className="text-uppercase">{s + ","}</span>
+                  ))}</p>
+                  <p><b>Sizes:</b>{product.size?.map((s)=>(
+                    <span className="text-uppercase">{s +","}</span>
+                  ))}</p>
+                  <p><b>price:</b>${product.price}</p>
+                <div className="productDesc">{product.desc}.</div>
+            </div>
+              <div className="productRight">
+                <form action="" className="productForm">
+                      <h1>Edit product</h1>
 
-                  <div className="userProfile">
-                      <img src="" alt="" className="userProfileImg" />
-                      <div className="userProfileDes">
-                          <h2 className="userprofileName">T-SHIRT </h2>
-                          <span className="userprofileTitle">BLACK AND WHITE </span>
-                      </div>
-                  </div>
-                  <div className="userDetails">
-                      <h3 className="userTitle">Product  Details. </h3>
-                      <p className="useritem"><i class="fa-regular fa-user"></i> kawsar99</p>
-                      <p className="useritem"><i class="fa-sharp fa-solid fa-briefcase"></i>23-07-1994</p>
-                  </div>
-                  <div className="userDetails">
-                      <h3 className="userTitle">Contact Details. </h3>
-                      <p className="useritem"><i class="fa-solid fa-phone"></i> +8810228383838</p>
-                      <p className="useritem"><i class="fa-regular fa-envelope"></i>Kawsarfiroz@gmail.com</p>
-                      <p className="useritem"><i class="fa-sharp fa-solid fa-briefcase"></i>Bangladesh</p>
+                    <input type="text" placeholder="title" onChange={(e)=>setTitle(e.target.value)} />
+                      <input type="text" placeholder="desc" onChange={(e)=>setDesc(e.target.value)} />
+                      <input type="text" placeholder="price" onChange={(e)=>setPrice(e.target.value)} />
+                      <label htmlFor="file" className="bg-secondary updateFile"> Upload Image</label>
+                      <input type="file" className="d-none" id="file"  onChange={(e)=>setFile(e.target.files[0])}/>
+                      <button className="btn btn-primary" onClick={handleUpdate}>update</button>
 
-                  </div>
-
+                </form>
               </div>
-              <div className="updateBottomright updateItem">
-                  <form action="" className="userForm">
 
-                      <div className="userUpdateformleft">
-                          <h3 className="userprofileName">Edit</h3>
-
-                          <label htmlFor="name">Product name</label>
-                          <input type="text" name="name" id="name" placeholder="product name" />
-                          <label htmlFor="title">Product title</label>
-                          <input type="text" name="title" id="title" placeholder="prduct title" />
-                          <label htmlFor="category">category</label>
-                          <input type="text" name="category" id="category" placeholder="category" />
-                          <label htmlFor="desc">Product desc</label>
-                          <input type="text" name="desc" id="desc" placeholder="Product description " />
-                          <label htmlFor="address">color</label>
-                          <input type="text" name="color" id="color" placeholder="red" />
-                      </div>
-                      <div className="userUpdteFormRight">
-                          <div className="userImgContainer">
-                              <img src="https://images.pexels.com/photos/14341974/pexels-photo-14341974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="userUploadImg" />
-                              <label htmlFor="file"><i class="fa-solid fa-arrow-up"></i></label>
-                              <input type="file" name="file" id="file" style={{ display: "none" }} />
-                          </div>
-                          <button className="userformSubmitBtn">Update </button>
-                      </div>
-                  </form>
-              </div>
-              {/* <div className="updateBottomRight updateItem">right</div> */}
-
-          </div>
+        </div>
     </div>
   )
 }

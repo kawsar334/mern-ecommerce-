@@ -16,7 +16,6 @@ const Products = ({cat, filters, sort}) => {
 const [products, setProducts] = useState([]);
 const [filterProducts, setFilterProducts] = useState([]);
   // const cat = useLocation().pathname.split("/")[2];
-  console.log(filters)
   useEffect(()=>{
     const getProducts= async()=>{
       try{
