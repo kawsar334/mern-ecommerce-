@@ -14,6 +14,7 @@ const key=STRIPE_SECRETE
 const Cart = () => {
   const { products, total, quantity } = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
+  
 const onToken = (token)=>{
     setStripeToken(token);
 }
@@ -30,7 +31,7 @@ const makeRequest = async()=>{
     console.log(err.response);
   }
 };
-stripeToken&& makeRequest();
+   stripeToken&& makeRequest();
 },[stripeToken])
 
 

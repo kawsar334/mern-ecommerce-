@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom"
 import { login } from "../../redux/apiCalls";
-import "./login.scss"
+import "./login.scss";
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import 'sweetalert2/src/sweetalert2.scss';
 
 const Login = () => {
 const dispatch  = useDispatch();
@@ -19,7 +21,17 @@ const user = {email, password}
       navigate("/");
     }
 
+    if(error){
+
+      Swal.fire({
+        text: "somthing went wrong !"
+      })
+    }
+  
+
   }
+
+ 
   return (
     <div className="login">
       <div className="loginWrapper">

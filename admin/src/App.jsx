@@ -17,8 +17,9 @@ import Login from './pages/login/Login';
 import { useSelector } from 'react-redux';
 
 function App() {
+
   const { currrentUser } = useSelector((state) => state.auth);
-  console.log(currrentUser)
+console.log(currrentUser)
   //protected route 
   const ProtectedRoute= ({children})=>{
     const admin = currrentUser?.others.isAdmin
@@ -29,11 +30,12 @@ function App() {
 }
 
 
+
   return (
     <>
-{currrentUser && <Topbar />}
+      {currrentUser?.others.isAdmin && <Topbar />}
  <div className='main_container'>
-   {currrentUser && <Sidebar />}
+        {currrentUser?.others.isAdmin && <Sidebar />}
 <Routes>
           <Route path='/' element={
           <ProtectedRoute>

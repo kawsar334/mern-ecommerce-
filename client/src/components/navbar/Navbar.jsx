@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 
   const handleLogout =(e)=>{
     e.preventDefault();
-    if(window.confirm("Are you sure logut ?")){
+    if(window.confirm("Are you sure logout ?")){
       dispatch(logout());
       window.location.reload();
 

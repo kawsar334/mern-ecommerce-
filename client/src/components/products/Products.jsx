@@ -6,11 +6,7 @@ import { useEffect } from "react"
 import axios from "axios"
 import { useState } from "react"
 import { useLocation } from "react-router-dom"
-const isBelowThreshold = (currentValue) => currentValue > 40;
 
-const array1 = [1, 30, 39, 29, 41, 13];
-
-console.log(array1.every(isBelowThreshold));
 
 const Products = ({cat, filters, sort}) => {
 const [products, setProducts] = useState([]);
