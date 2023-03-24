@@ -22,7 +22,7 @@ const onToken = (token)=>{
 useEffect(()=>{
 const makeRequest = async()=>{
   try{
-    const res = await axios.post("http://localhost:4004/api/stripe/payment",{
+    const res = await axios.post("/stripe/payment",{
       tokenId:stripeToken.id,
       amount:2000,
     });

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { userRequest } from "../../api/requestMethods";
+import RequestMethods from "../../api/RequestMethods";
 
 import "./userlist.css";
 
@@ -14,29 +14,27 @@ import "./userlist.css";
 
 const UserList = () => {
 const { currrentUser } = useSelector((state) => state.auth);
-const [user, setUser] = useState([])
+  // const { data, err, loading } = RequestMethods(`/user?new=true`);
+  const [data, setData] = useState([])
 
-useEffect(()=>{
-  const getUser = async()=>{
-    try{
-      const res =await userRequest(`/user?new=${true}`,{
-        headers: { token:`Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGM5MzAyMWY3M2MxNmJjNGNhZWQxNCIsInVzZXIiOnsiX2lkIjoiNjQwYzkzMDIxZjczYzE2YmM0Y2FlZDE0IiwidXNlcm5hbWUiOiJhYmFkc2ZkIiwiZW1haWwiOiJhYmRAZ21haWwuY29tIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWVEYnhNSHUyYVJPMjRJQ0NnUUNMWXNENjAySlhpbkE0PSIsInBob25lIjoiMjkyODgzODM4MzgiLCJpbWciOiIiLCJpc0FkbWluIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTExVDE0OjQxOjA2LjE5MloiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTExVDE0OjQxOjA2LjE5MloiLCJfX3YiOjB9LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Nzg1NTMxODAsImV4cCI6MTY3ODgxMjM4MH0.EonNaUzH2Avp7SjchrYWQ203jA66dmHZr_LlM-odaRM`}
-      });
-      setUser(res.data);
-    }catch(err){
-      console.log(err.response.data);
+
+
+
+
+  useEffect(()=>{
+    const getData= async()=>{
+      const res = await axios.get(`/user?new=true`);
+      setData(res.data);
+
+
     }
-  }
-  getUser();
- },[]);
+    getData();
 
-
+  })
  const deleteUser = async(id)=>{
   if(window.confirm("are you sure delete this user")){
   try{
-    const res = await axios.delete(`/user/${id}`,{
-      headers:{token:`Bearer ${currrentUser?.token}`}
-    });
+    const res = await axios.delete(`/user/${id}`);
   if(res.status ===200){
     window.location.reload();
   }
@@ -61,7 +59,7 @@ useEffect(()=>{
           </tr>
         </thead>
         <tbody>
-          {user.map((u)=>(<tr key={u._id}>
+          {data?.map((u)=>(<tr key={u._id}>
             <th scope="row" className="text-center">{u._id.slice(0,7)+"..."}</th>
             <td ><img src={u.img} alt="" className="userIgm" /> <span>{u.username}</span></td>
             <td>{u.email}</td>

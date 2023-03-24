@@ -1,33 +1,21 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { NavLink, useLocation,useNavigate } from "react-router-dom"
-import { userRequest } from "../../api/requestMethods";
+import RequestMethods  from "../../api/RequestMethods";
 import "./user.css";
 import axios from "axios";
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 
 const User = () => {
     const id = useLocation().pathname.split("/")[2];
-    const [user, setUser] = useState({});
+    
     const [isAdmin , setIsAdmin] = useState(false);
     const [file, setFile] = useState(null);
     const navigate = useNavigate()
 
- 
-    useEffect(()=>{
-        const getUser = async()=>{
-            try{
-              const res = await userRequest(`/user/find/${id}`,{
-                headers: { token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGM5MzAyMWY3M2MxNmJjNGNhZWQxNCIsInVzZXIiOnsiX2lkIjoiNjQwYzkzMDIxZjczYzE2YmM0Y2FlZDE0IiwidXNlcm5hbWUiOiJhYmFkc2ZkIiwiZW1haWwiOiJhYmRAZ21haWwuY29tIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWVEYnhNSHUyYVJPMjRJQ0NnUUNMWXNENjAySlhpbkE0PSIsInBob25lIjoiMjkyODgzODM4MzgiLCJpbWciOiIiLCJpc0FkbWluIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTExVDE0OjQxOjA2LjE5MloiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTExVDE0OjQxOjA2LjE5MloiLCJfX3YiOjB9LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Nzg1NTMxODAsImV4cCI6MTY3ODgxMjM4MH0.EonNaUzH2Avp7SjchrYWQ203jA66dmHZr_LlM-odaRM` }
-              });
-                setUser(res.data);
-            }catch(err){
-                console.log(err.response.data)
-            }
-        }
-        getUser()
-    },[id]);
+  const { data, err, loading } = RequestMethods(`/user/find/${id}`)
 
+ 
 
     //handling submit function
     const handleSubmit = async(e)=>{
@@ -40,7 +28,7 @@ const User = () => {
            
             const userInfo = { isAdmin, img:uploadRes.data.secure_url }
             
-          const res = await userRequest.put(`/user/${id}`, userInfo, {
+          const res = await axios.put(`/user/${id}`, userInfo, {
             headers: { token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MGM5MzAyMWY3M2MxNmJjNGNhZWQxNCIsInVzZXIiOnsiX2lkIjoiNjQwYzkzMDIxZjczYzE2YmM0Y2FlZDE0IiwidXNlcm5hbWUiOiJhYmFkc2ZkIiwiZW1haWwiOiJhYmRAZ21haWwuY29tIiwicGFzc3dvcmQiOiJVMkZzZEdWa1gxOWVEYnhNSHUyYVJPMjRJQ0NnUUNMWXNENjAySlhpbkE0PSIsInBob25lIjoiMjkyODgzODM4MzgiLCJpbWciOiIiLCJpc0FkbWluIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTAzLTExVDE0OjQxOjA2LjE5MloiLCJ1cGRhdGVkQXQiOiIyMDIzLTAzLTExVDE0OjQxOjA2LjE5MloiLCJfX3YiOjB9LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Nzg1NTMxODAsImV4cCI6MTY3ODgxMjM4MH0.EonNaUzH2Avp7SjchrYWQ203jA66dmHZr_LlM-odaRM` }
           });
             console.log(res.data);
@@ -71,7 +59,7 @@ const User = () => {
                     <label htmlFor="file">
                        
                         <input type="file" name="" id="file" style={{display:"none"}} onChange={(e)=>setFile(e.target.files[0])} />
-              <img src={file ? URL.createObjectURL(file) : `${user?.img || "https://images.pexels.com/photos/4100769/pexels-photo-4100769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}`} alt="" className="userImg" />
+              <img src={file ? URL.createObjectURL(file) : `${data?.img || "https://images.pexels.com/photos/4100769/pexels-photo-4100769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}`} alt="" className="userImg" />
                     </label>
                     <label htmlFor="isAdmin">IS ADMIN:</label>
                       <select name="isAdmin" id="isAdmin" onChange={(e) => setIsAdmin(e.target.value)}>

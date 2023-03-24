@@ -1,7 +1,8 @@
+import axios from "axios"
 import { useState } from "react"
 import { useEffect } from "react"
 import { Link, NavLink, useNavigate } from "react-router-dom"
-import { publicRequest, userRequest } from "../../api/requestMethods"
+// import { publicRequest, userRequest } from "../../api/requestMethods"
 import "./productlist.css"
 
 const ProductLis = () => {
@@ -11,7 +12,7 @@ const [success, setSuccess] = useState('')
     useEffect(()=>{
         const getProducts= async()=>{
             try{
-                const res = await publicRequest.get("/product/");
+                const res = await axios.get("/product/");
                 setProducts(res.data)
                 
 
@@ -26,7 +27,7 @@ const [success, setSuccess] = useState('')
     //handling delete function
     const handleDelete=async(id)=>{
         try{
-            const res = await userRequest.delete(`/product/${id}`);
+            const res = await axios.delete(`/product/${id}`);
             setSuccess(res.data);
 
 

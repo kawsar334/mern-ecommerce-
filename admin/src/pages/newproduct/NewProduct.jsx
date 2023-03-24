@@ -1,8 +1,8 @@
 import { useState } from "react"
 import "./newproduct.css";
 import axios from "axios";
-import { userRequest } from "../../api/requestMethods";
 import { useNavigate } from "react-router-dom";
+import requestMethods from "../../api/RequestMethods";
 
 const NewProduct = () => {
     const navigate = useNavigate();
@@ -26,13 +26,14 @@ const NewProduct = () => {
         try{
             const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dmvmzwqkw/image/upload", data);
             const newProduct = { inputs, color, size, categories, desc, title, img: uploadRes.data.secure_url,price }
-            const res = await userRequest.post(`/product/addProduct/`,newProduct);
+            const res = await axios.post(`/product/addProduct/`,newProduct);
            
-            if(res.status===200){
-                navigate(`/produclist`)
+            if(res.status===200){ 
+                navigate(`/produclist`) ;
             }
         }catch(err){
             console.log(err);
+            
         }
     }
   return (

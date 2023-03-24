@@ -33,7 +33,7 @@ export const Login = async(req, res, next)=>{
             }else{
             const token = jwt.sign({id:user._id, user, isAdmin:user.isAdmin}, process.env.SECRET, {expiresIn:"3d"});
             const {password , ...others} = user._doc;
-            res.status(200).json({others, token})
+            res.cookie("token",token, {httpOnly:true}).status(200).json({others, token});
             }
         }
         

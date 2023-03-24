@@ -2,21 +2,22 @@ import jwt from "jsonwebtoken";
 
 
 export const verifyToken = async(req, res, next)=>{
-    const authHeader = req.headers.token 
-    if(authHeader){
-        const token = authHeader.split(" ")[1];
-             jwt.verify(token, process.env.SECRET, (err, user)=>{
-        if(err){
-            return res.status(403).json("token is not valid !");
-        }else{
-            req.user = user;
-            next();
-        }
-    })
+    
+    const token = req.cookies.token
+    console.log(token) ;
+    if(!token){ 
+        
+        return res.status(403).json("You are Not authenticated  !");
     }else{
-        return res.status(401).json("you are not authenticated !")
-    };
-};
+        jwt.verify(token, process.env.SECRET,(err, user)=>{
+            if(err){
+                return res.status(403).json("Invalid Token !")
+
+            }
+            req.user = user;
+            next(); 
+        })
+    }}
 
 
 //VERIFYTOKEN AND AUTHORIZATION 

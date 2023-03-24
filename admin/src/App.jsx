@@ -42,23 +42,24 @@ console.log(currrentUser)
           <UserList />
             </ProtectedRoute>
           } />
-          <Route path='/user' element={
+           <Route path='/user' element={
           <ProtectedRoute>
           <UserList />
           </ProtectedRoute>
-        }
-           />
-          <Route path='/user/:id' element={
+        } 
+           /> 
+        <Route path='/user/:id' element={
           <ProtectedRoute>
             <User />
           </ProtectedRoute>
-          } />
+          } /> 
           <Route path='/newuser' element={
             <NewUser />} />
           <Route path='/produclist' element={<ProtectedRoute><ProductLis /></ProtectedRoute>} />
-          <Route path='/product/:id' element={<ProtectedRoute> <Product /></ProtectedRoute> } />
           <Route path='/newproduct' element={<ProtectedRoute><NewProduct /></ProtectedRoute>} />
+          <Route path='/product/:id' element={<ProtectedRoute> <Product /></ProtectedRoute> } />
           <Route path='/login' element={!currrentUser?.others?.isAdmin ?<Login /> :<UserList />} />
+           <Route path='/login' element={!currrentUser?.others?.isAdmin ?<Login /> :<UserList />} />
 
 </Routes>
  </div>

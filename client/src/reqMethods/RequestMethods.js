@@ -5,7 +5,7 @@ import axios  from "axios";
 
 const BASEURL= "http://localhost:4004/api/";
 
-const token = JSON?.parse(JSON?.parse(localStorage?.getItem("persist:ecommerce"))?.user)?.currentUser?.token 
+const token = ""
 
 
 export const publicRequest = axios.create({
